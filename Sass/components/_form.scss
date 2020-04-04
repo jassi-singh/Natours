@@ -1,0 +1,90 @@
+.form {
+    &__group:not(:last-child) {
+        margin-bottom: 2rem; 
+    }
+
+    &-input {
+        padding: 1.5rem 2rem;
+        border: none;
+        font-family: inherit;
+        color: inherit;
+        font-size: 1.5rem;
+        background: rgba(#fff, 0.5);
+        display: block;
+        width: 90%;
+        border-bottom: 2px solid transparent;
+        transition: all .3s;
+
+        &:focus {
+            outline: none;
+            border-bottom: 2px solid $color-primary;
+            box-shadow: 0 1rem 2rem rgba($color-black, .1);
+
+            &:invalid {
+                border-bottom: 2px solid $color-secondary-dark;
+            }
+
+        }
+
+        &::-webkit-input-placeholder {
+            color: rgb(177, 176, 176);
+        }
+    }
+
+    &-label {
+        font-size: 1.2rem;
+        font-weight: 700;
+        display: block;
+        padding: .8rem 2rem;
+        transition: all .2s;
+    }
+    &-input:placeholder-shown + &-label{
+        opacity: 0;
+        transform: translateY(-4.3rem);
+    }
+
+    &__radio{
+        width: 49%;
+        display: inline-block;
+        font-size: 1.6rem;
+        @include responde(tab-port){
+            width: 100%;
+            margin-bottom: 3rem;
+        }
+        &-input{
+            display: none;;
+        }
+        &-label{
+            position: relative;
+            padding-left: 5rem;
+        }
+        &-button{
+            width: 3rem;
+            height: 3rem;
+            border: 5px solid $color-primary;
+            border-radius: 50%;
+            display: inline-block;
+            position: absolute;
+            top: -1.2rem;
+            left: 0;
+            &::after{
+                content: "";
+                display: block;
+                width: 1.5rem;
+                height: 1.5rem;
+                background: $color-primary;
+                border-radius: 50%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                opacity: 0;
+                transition: all .3s;
+            }
+        }
+        &-input:checked + &-label &-button::after{
+            opacity: 1;
+        }
+    }
+
+}

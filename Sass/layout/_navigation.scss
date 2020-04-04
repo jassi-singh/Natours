@@ -1,0 +1,186 @@
+.navigation {
+    position: absolute;
+    &__checkbox {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    &__toggle {
+        width: 7rem;
+        height: 7rem;
+        border-radius: 50%;
+        position: fixed;
+        top: 6rem;
+        right: 6rem;
+        z-index: 400;
+        background: $color-white;
+        text-align: center;
+
+        @include responde(tab-port){
+            top: 3rem;
+            right: 3rem;
+        }
+        @include responde(phone){
+            top: 2rem;
+            right: 2rem;
+            width: 6rem; 
+            height: 6rem;
+        }
+
+    }
+
+    &__background {
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        position: fixed;
+        top: 6.5rem;
+        right: 6.5rem;
+        background: radial-gradient($color-primary-light, $color-primary-dark);
+        z-index: 100;
+        transition: all .4s .2s;
+
+        @include responde(tab-port){
+            top: 3.5rem;
+            right: 3.5rem;
+        }
+        @include responde(phone){
+            top: 2.5rem;
+            right: 2.5rem;
+            width: 4rem;
+            height: 4rem;
+        }
+    }
+
+    &__nav {
+        position: fixed;
+        height: 100vh;
+        width: 0%;
+        top: 0;
+        left: 0;
+        z-index: 200;
+        opacity: 0;
+        visibility: hidden;
+        transition: all .8s cubic-bezier(.58, -0.61, .51, 1.95);
+
+    }
+
+    &__list {
+        list-style: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        @include responde(tab-port){
+            width: 100%;
+        }
+        @include responde(phone){
+            width: 150%;
+        }
+    }
+
+    &__item {
+        font-weight: 300;
+        font-size: 3rem;
+        text-transform: uppercase;
+        text-align: center;
+        @include responde(phone){
+            font-size: 2.5rem;
+        }
+
+    }
+
+    &__link {
+
+        &:link,
+        &:visited {
+            display: inline-block;
+            margin: .5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(120deg, transparent 0%, transparent 50%, white 50%);
+            background-size: 220%;
+            text-decoration: none;
+            color: $color-white;
+            transition: all .4s;
+
+            &:hover,
+            &:active {
+                background-position: 100%;
+                color: $color-primary;
+                transform: translateX(1.5rem);
+            }
+
+            span {
+                padding-right: 1.5rem;
+            }
+        }
+    }
+
+    &__icon {
+        position: relative;
+        margin-top: 3.5rem;
+        @include responde(phone){
+            margin-top: 3rem;
+        }
+
+        &,
+        &::after,
+        &::before {
+            width: 3rem;
+            height: 2px;    
+            background: $color-black;
+            display: inline-block;
+
+
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            transition: all .2s;
+
+        }
+
+        &::before {
+            top: -.8rem;
+        }
+
+        &::after {
+            top: .8rem;
+        }
+    }
+
+    &__toggle:hover &__icon {
+        &::before {
+            top: -1rem;
+        }
+
+        &::after {
+            top: 1rem;
+        }
+    }
+
+    &__checkbox:checked~&__background {
+        transform: scale(80);
+    }
+
+    &__checkbox:checked~&__nav {
+        visibility: visible;
+        width: 100%;
+        opacity: 1;
+    }
+
+    &__checkbox:checked + &__toggle &__icon{
+        width: 0;
+        &::after,
+        &::before{
+            top: 50%;
+            left: 50%;
+        }
+        &::before{transform:translate(-50%,-50%) rotate(135deg);}
+        &::after{transform:translate(-50%,-50%) rotate(-135deg);}
+    }
+    
+}

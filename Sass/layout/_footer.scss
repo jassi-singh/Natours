@@ -1,0 +1,57 @@
+.footer{
+    background: rgb(51,51,51);
+    padding: 10rem 5rem; 
+    font-size: 1.4rem;
+    color: $color-white;
+    @include responde(tab-port){
+        padding: 5rem 3rem;
+    }
+    &__nav{         
+        display: inline-block;
+        border-top: 1px solid $color-grey-dark ;
+        padding-top: 2rem;
+
+        @include responde(tab-port){
+            width: 100%;
+            text-align: center;
+        }
+    }
+    &__list{
+
+    }
+    &__item{
+        display: inline-block;
+        list-style: none;
+        &:not(:last-child){
+            margin-right: 1.5rem;
+        }
+    }
+    &__link{
+        &:link,
+        &:visited{
+            color: $color-white;
+            background: #333;
+            text-decoration: none;
+            text-transform: uppercase;
+            display: inline-block;
+            transition: all .2s;
+        }
+        &:active,
+        &:hover{
+            color: $color-primary;
+            transform: rotate(5deg) scale(1.3);
+            box-shadow: 0 1rem 1rem rgba($color-black,0.4);
+        }
+
+    }
+    &__copy{
+        width: 80%;
+        float: right;
+        padding-top: 2rem;
+        border-top: 1px solid $color-grey-dark;
+        @include responde(tab-port){
+            width: 100%;
+            float: none;
+        }
+    }
+}  
